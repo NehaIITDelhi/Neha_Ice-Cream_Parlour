@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -252,6 +252,299 @@
             </div>
             
             <p class="small text-muted mt-4 mb-0">© 2025 Neha Ice Cream Parlour. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha Ice Cream Parlour - Dumri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #fffcfc; color: #444; }
+        
+        /* --- SCROLLING NEWS LINE --- */
+        .top-marquee {
+            background-color: #d63384;
+            color: white;
+            font-size: 0.9rem;
+            padding: 8px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+            background-size: cover; 
+            background-position: center; 
+            height: 300px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            text-align: center; 
+        }
+        .brand-name { 
+            font-family: 'Pacifico', cursive; 
+            font-size: 3.5rem; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5); 
+            margin-bottom: 0;
+        }
+
+        /* --- MEDHA & VADILAL ZONES --- */
+        .medha-card {
+            background: linear-gradient(to bottom right, #f0f8ff, #ffffff);
+            border: 2px solid #cce5ff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.1);
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .medha-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0, 86, 179, 0.2); }
+        
+        .medha-header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .medha-badge {
+            background-color: #e3f2fd;
+            color: #0056b3;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px 2px;
+        }
+
+        .vadilal-card {
+            background: #fffcfc;
+            border: 2px solid #fadadd;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.1);
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .vadilal-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(214, 51, 132, 0.2); }
+        
+        .vadilal-header {
+            background-color: #d63384;
+            color: white;
+            padding: 15px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .gold-text { color: #b8860b; font-weight: bold; font-family: 'Playfair Display', serif; }
+        
+        .party-box {
+            border: 1px dashed #d63384;
+            background-color: #fff0f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-whatsapp {
+            background-color: #25D366; 
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-whatsapp:hover { 
+            background-color: #128C7E; 
+            color: white;
+            transform: scale(1.02);
+        }
+        
+        .check-list li { margin-bottom: 8px; }
+
+        /* --- FOOTER STYLES --- */
+        .footer-section {
+            background: #222;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        .owner-name {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .shop-address {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        .btn-map {
+            background-color: #fff;
+            color: #333;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-map:hover { background-color: #ddd; }
+    </style>
+</head>
+<body>
+
+    <div class="top-marquee">
+        <marquee behavior="scroll" direction="left">
+            📢 Welcome to Neha Ice Cream Parlour! • 🍦 Book Vadilal Ice Cream Trolleys for Marriages • 🥛 Fresh Medha Milk Available Daily!
+        </marquee>
+    </div>
+
+    <div class="hero">
+        <div>
+            <h1 class="brand-name">Neha Ice Cream Parlour</h1>
+            <p class="lead">Medha Dairy in Dumri, Giridih</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row g-4">
+            
+            <div class="col-md-6">
+                <div class="medha-card">
+                    <div class="medha-header">
+                        🥛 Medha Dairy Agency
+                    </div>
+                    <div class="p-4">
+                        <h4 style="color: #444;">Dumri's Official Distributor</h4>
+                        <p class="text-muted">Start your day healthy with Jharkhand's own pure milk products.</p>
+                        
+                        <div class="mb-3">
+                            <span class="medha-badge">✅ Daily Fresh Stock</span>
+                            <span class="medha-badge">✅ Bulk Supply</span>
+                            <span class="medha-badge">✅ Pure Ghee</span>
+                        </div>
+
+                        <ul class="list-unstyled check-list text-start ps-3" style="border-left: 3px solid #0056b3;">
+                            <li><strong>Full Cream / Toned Milk</strong></li>
+                            <li><strong>Fresh Paneer & Curd (Dahi)</strong></li>
+                            <li><strong>Lassi & Pedha</strong></li>
+                        </ul>
+
+                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=600&q=80" 
+                             alt="Fresh Milk and Paneer" class="img-fluid rounded mt-3" 
+                             style="width: 100%; height: 250px; object-fit: cover; border: 1px solid #cce5ff;">
+
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20need%20Medha%20Dairy%20products." class="btn-whatsapp">
+                            Order Milk & Paneer 💬
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="vadilal-card">
+                    <div class="vadilal-header">
+                        🍦 Vadilal Ice Cream
+                    </div>
+                    <div class="p-4">
+                        <h4 class="gold-text">Premium Ice Cream Parlour</h4>
+                        <p class="text-muted">Indulge in the finest flavors. From cones to family packs, we have it all.</p>
+
+                        <div class="party-box">
+                            <h5 style="color: #d63384; font-weight: bold;">🎉 Planning a Wedding?</h5>
+                            <p class="small mb-2">Book our <strong>VIP Ice Cream Trolley</strong> for Marriages & Parties!</p>
+                            <span style="font-size: 1.5rem;">🚚✨</span>
+                        </div>
+
+                        <ul class="list-unstyled check-list text-start ps-3 mt-4" style="border-left: 3px solid #d63384;">
+                            <li><strong>Party Packs & Bricks</strong></li>
+                            <li><strong>Choco Bars & Cones</strong></li>
+                            <li><strong>Sugar-Free Options</strong></li>
+                        </ul>
+
+                        <img src="https://images.unsplash.com/photo-1576506295286-5cda18df43e7?auto=format&fit=crop&w=600&q=80" 
+                             alt="Ice Cream Party" class="img-fluid rounded mt-3" 
+                             style="width: 100%; height: 200px; object-fit: cover;">
+
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking." class="btn-whatsapp">
+                            Book Trolley for Event 💬
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                
+                <div class="col-md-5 mb-4 text-center text-md-start">
+                    <p class="small text-uppercase text-muted mb-1">Proprietor</p>
+                    <h3 class="owner-name">Madan Prasad Bhagat</h3> <hr style="width: 50px; border: 2px solid #d4af37; opacity: 1; margin: 15px 0;">
+                    
+                    <p class="shop-address">
+                        <strong>Neha Ice Cream Parlour & Medha Dairy</strong><br>
+                        Main Road, Dumri<br>
+                        Giridih, Jharkhand - 825167
+                    </p>
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=Neha+Ice+Cream+Parlour+Dumri+Giridih" target="_blank" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Open Location in Maps
+                    </a>
+                </div>
+
+                <div class="col-md-5">
+                    <div style="background: #333; padding: 25px; border-radius: 15px; border: 1px solid #444;">
+                        <h5 style="color: #d4af37; font-family: 'Playfair Display', serif; margin-bottom: 20px;">🕒 Shop Opening Hours</h5>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3" style="border-bottom: 1px solid #555; padding-bottom: 10px;">
+                            <span style="color: #ddd;">☀️ Morning:</span>
+                            <strong style="color: #fff; font-size: 1.1rem;">9:00 AM - 3:00 PM</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span style="color: #ddd;">🌙 Evening:</span>
+                            <strong style="color: #fff; font-size: 1.1rem;">5:00 PM - 8:00 PM</strong>
+                        </div>
+
+                        <p class="small text-muted mt-3 text-center">Open All 7 Days</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="small text-muted mt-5 mb-0 text-center">© 2025 Neha Ice Cream Parlour. All Rights Reserved.</p>
         </div>
     </div>
 
