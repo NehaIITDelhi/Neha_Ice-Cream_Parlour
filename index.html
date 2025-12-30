@@ -6,10 +6,12 @@
     <title>Neha Ice Cream Parlour - Dumri</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #fffcfc; color: #444; }
         
-        /* --- 1. HERO SECTION (KEPT ORIGINAL) --- */
+        /* --- HERO SECTION --- */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
             background-size: cover; 
@@ -23,14 +25,12 @@
         }
         .brand-name { 
             font-family: 'Pacifico', cursive; 
-            font-size: 3.8rem; 
+            font-size: 3.5rem; 
             text-shadow: 2px 2px 8px rgba(0,0,0,0.5); 
             margin-bottom: 0;
         }
 
-        /* --- 2. NEW CATCHY SECTIONS CSS --- */
-        
-        /* Medha Zone - Fresh & Trusted */
+        /* --- MEDHA & VADILAL ZONES --- */
         .medha-card {
             background: linear-gradient(to bottom right, #f0f8ff, #ffffff);
             border: 2px solid #cce5ff;
@@ -63,7 +63,6 @@
             margin: 5px 2px;
         }
 
-        /* Vadilal Zone - Premium & Classy */
         .vadilal-card {
             background: #fffcfc;
             border: 2px solid #fadadd;
@@ -95,29 +94,62 @@
             text-align: center;
         }
 
-        /* Shared Button Styles */
-        .btn-action {
+        /* --- BUTTONS --- */
+        .btn-whatsapp {
+            background-color: #25D366; 
+            color: white;
             width: 100%;
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 50px;
             font-weight: bold;
             text-transform: uppercase;
             margin-top: 20px;
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
             transition: 0.3s;
+            border: none;
         }
-        .btn-medha { background-color: #0056b3; color: white; }
-        .btn-medha:hover { background-color: #004494; color: white; }
-        
-        .btn-vadilal { background-color: #d63384; color: white; }
-        .btn-vadilal:hover { background-color: #c21c6b; color: white; }
+        .btn-whatsapp:hover { 
+            background-color: #128C7E; 
+            color: white;
+            transform: scale(1.02);
+        }
         
         .check-list li { margin-bottom: 8px; }
 
-        /* Footer */
-        .footer { background: #f8d7da; padding: 20px; text-align: center; margin-top: 50px; }
+        /* --- NEW FOOTER & LOCATION --- */
+        .footer-section {
+            background: #333;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .owner-name {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37; /* Gold Color */
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        .shop-address {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        .btn-map {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-map:hover {
+            background-color: #fff;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -153,11 +185,12 @@
                             <li><strong>Lassi & Pedha</strong></li>
                         </ul>
 
-                        <img src="https://images.unsplash.com/photo-1601633575997-6a5676b0cb44?auto=format&fit=crop&w=600&q=80" 
-                             alt="Fresh Dairy" class="img-fluid rounded mt-3" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=600&q=80" 
+                             alt="Fresh Milk and Paneer" class="img-fluid rounded mt-3" 
+                             style="width: 100%; height: 250px; object-fit: cover; border: 1px solid #cce5ff;">
 
-                        <a href="https://wa.me/9934506226?text=Hi,%20I%20need%20Medha%20Dairy%20products." class="btn-action btn-medha">
-                            Order Milk & Paneer
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20need%20Medha%20Dairy%20products." class="btn-whatsapp">
+                            Order Milk & Paneer 💬
                         </a>
                     </div>
                 </div>
@@ -185,10 +218,11 @@
                         </ul>
 
                         <img src="https://images.unsplash.com/photo-1576506295286-5cda18df43e7?auto=format&fit=crop&w=600&q=80" 
-                             alt="Ice Cream Party" class="img-fluid rounded mt-3" style="width: 100%; height: 200px; object-fit: cover;">
+                             alt="Ice Cream Party" class="img-fluid rounded mt-3" 
+                             style="width: 100%; height: 200px; object-fit: cover;">
 
-                        <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking." class="btn-action btn-vadilal">
-                            Book Trolley for Event
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking." class="btn-whatsapp">
+                            Book Trolley for Event 💬
                         </a>
                     </div>
                 </div>
@@ -197,9 +231,28 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p><strong>Neha Ice Cream Parlour & Dairy</strong></p>
-        <p>Dumri, Giridih, Jharkhand | Authorized Vadilal & Medha Partner</p>
+    <div class="footer-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h3 class="owner-name">Proprietor: Madan Prasad Bhagat</h3>
+                    
+                    <hr style="width: 50%; margin: 15px auto; border-color: #777;">
+                    
+                    <p class="shop-address">
+                        <strong>Neha Ice Cream Parlour & Medha Dairy</strong><br>
+                        Main Road, Dumri<br>
+                        Giridih, Jharkhand - 825167
+                    </p>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Neha+Ice+Cream+Parlour+Dumri+Giridih" target="_blank" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Open in Google Maps
+                    </a>
+                </div>
+            </div>
+            
+            <p class="small text-muted mt-4 mb-0">© 2025 Neha Ice Cream Parlour. All Rights Reserved.</p>
+        </div>
     </div>
 
 </body>
