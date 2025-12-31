@@ -1,94 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neha Ice Cream Parlour - Dumri</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Pacifico&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #fffcfc; color: #444; overflow-x: hidden; }
-        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffcfc;
+            color: #444;
+            overflow-x: hidden;
+        }
+
         /* --- FIREWORKS OVERLAY --- */
         #fireworks-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; 
-            pointer-events: none; transition: opacity 2s ease-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            transition: opacity 2s ease-out;
         }
-        .pyro > .before, .pyro > .after {
-            position: absolute; width: 7px; height: 7px; border-radius: 50%;
+
+        .pyro>.before,
+        .pyro>.after {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
             box-shadow: -120px -218.66667px #ff0000, 248px -16.66667px #800080, 190px 16.66667px #0000ff, -113px -308.66667px #d63384, -109px -287.66667px #ff4500, -50px -313.66667px #ff006e, 226px -31.66667px #4b0082, 180px -351.66667px #ff1493, 250px -351.66667px #ff8c00, 9px -69.66667px #b22222, 20px -20.66667px #dc143c, 200px -250.66667px #00008b, 215px -300.66667px #9400d3, -110px -80.66667px #191970, 220px -330.66667px #8b0000, -10px -230.66667px #c71585;
             animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
         }
-        .pyro > .after { animation-delay: 1.25s, 1.25s, 1.25s; animation-duration: 1.25s, 1.25s, 6.25s; }
-        @keyframes bang { to { box-shadow: -120px -318.66667px transparent, 248px -116.66667px transparent, 190px -83.33333px transparent, -113px -408.66667px transparent, -109px -387.66667px transparent, -50px -413.66667px transparent, 226px -131.66667px transparent, 180px -451.66667px transparent, 250px -451.66667px transparent, 9px -169.66667px transparent, 20px -120.66667px transparent, 200px -350.66667px transparent, 215px -400.66667px transparent, -110px -180.66667px transparent, 220px -430.66667px transparent, -10px -330.66667px transparent; } }
-        @keyframes gravity { to { transform: translateY(200px); opacity: 0; } }
-        @keyframes position { 0%, 19.9% { margin-top: 10%; margin-left: 40%; } 20%, 39.9% { margin-top: 40%; margin-left: 30%; } 40%, 59.9% { margin-top: 20%; margin-left: 70%; } 60%, 79.9% { margin-top: 30%; margin-left: 20%; } 80%, 99.9% { margin-top: 30%; margin-left: 80%; } }
+
+        .pyro>.after {
+            animation-delay: 1.25s, 1.25s, 1.25s;
+            animation-duration: 1.25s, 1.25s, 6.25s;
+        }
+
+        @keyframes bang {
+            to {
+                box-shadow: -120px -318.66667px transparent, 248px -116.66667px transparent, 190px -83.33333px transparent, -113px -408.66667px transparent, -109px -387.66667px transparent, -50px -413.66667px transparent, 226px -131.66667px transparent, 180px -451.66667px transparent, 250px -451.66667px transparent, 9px -169.66667px transparent, 20px -120.66667px transparent, 200px -350.66667px transparent, 215px -400.66667px transparent, -110px -180.66667px transparent, 220px -430.66667px transparent, -10px -330.66667px transparent;
+            }
+        }
+
+        @keyframes gravity {
+            to {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes position {
+
+            0%,
+            19.9% {
+                margin-top: 10%;
+                margin-left: 40%;
+            }
+
+            20%,
+            39.9% {
+                margin-top: 40%;
+                margin-left: 30%;
+            }
+
+            40%,
+            59.9% {
+                margin-top: 20%;
+                margin-left: 70%;
+            }
+
+            60%,
+            79.9% {
+                margin-top: 30%;
+                margin-left: 20%;
+            }
+
+            80%,
+            99.9% {
+                margin-top: 30%;
+                margin-left: 80%;
+            }
+        }
 
         /* --- WEBSITE STYLES --- */
-        .top-marquee { background: linear-gradient(90deg, #d63384, #b02a6b); color: white; font-size: 0.95rem; padding: 10px 0; font-weight: bold; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
-            background-size: cover; background-position: center; 
+        .top-marquee {
+            background: linear-gradient(90deg, #d63384, #b02a6b);
+            color: white;
+            font-size: 0.95rem;
+            padding: 10px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
-            min-height: 400px; 
+            min-height: 400px;
             height: auto;
             padding: 80px 20px;
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
         }
-        
-        .brand-name { font-family: 'Pacifico', cursive; font-size: 4rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.7); margin-bottom: 5px; animation: fadeInDown 1.5s ease-out; line-height: 1.2; }
-        .hero-sub { font-size: 1.5rem; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); animation: fadeInUp 1.5s ease-out; }
-        
-        .medha-card, .vadilal-card { border-radius: 20px; overflow: hidden; height: 100%; transition: transform 0.4s ease, box-shadow 0.4s ease; background: white; }
-        .medha-card { border: 1px solid #cce5ff; border-top: 5px solid #0056b3; }
-        .medha-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 86, 179, 0.2); }
-        .medha-header { background-color: #0056b3; color: white; padding: 15px; font-weight: 700; text-align: center; }
-        
-        .vadilal-card { border: 1px solid #fadadd; border-top: 5px solid #d63384; }
-        .vadilal-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(214, 51, 132, 0.2); }
-        .vadilal-header { background-color: #d63384; color: white; padding: 15px; font-weight: 700; text-align: center; }
-        .gold-text { color: #b8860b; font-weight: bold; font-family: 'Playfair Display', serif; }
 
-        .feature-box { text-align: center; padding: 30px 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; border-bottom: 3px solid transparent; transition: 0.3s; }
-        .feature-box:hover { border-bottom: 3px solid #d63384; transform: translateY(-5px); }
-        .feature-icon { font-size: 2.5rem; margin-bottom: 15px; color: #d63384; }
+        .brand-name {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 5px;
+            animation: fadeInDown 1.5s ease-out;
+            line-height: 1.2;
+        }
+
+        .hero-sub {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .medha-card,
+        .vadilal-card {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: white;
+        }
+
+        .medha-card {
+            border: 1px solid #cce5ff;
+            border-top: 5px solid #0056b3;
+        }
+
+        .medha-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.2);
+        }
+
+        .medha-header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .vadilal-card {
+            border: 1px solid #fadadd;
+            border-top: 5px solid #d63384;
+        }
+
+        .vadilal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(214, 51, 132, 0.2);
+        }
+
+        .vadilal-header {
+            background-color: #d63384;
+            color: white;
+            padding: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .gold-text {
+            color: #b8860b;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            border-bottom: 3px solid #d63384;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #d63384;
+        }
+
+        /* --- SHINY GOLD MENU BUTTON --- */
+        .btn-menu-pop {
+            /* The Gold Gradient - makes it look shiny */
+            background: linear-gradient(to bottom, #FFD700 0%, #FDB931 50%, #DAA520 100%);
+
+            color: #000;
+            /* Black text is easiest to read on gold */
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: 800;
+            /* Extra Bold */
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+
+            /* Golden Border and Shadow */
+            border: 1px solid #B8860B;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+
+            position: relative;
+            overflow: hidden;
+            animation: pulse-gold 2s infinite;
+        }
+
+        /* Make it brighter on hover */
+        .btn-menu-pop:hover {
+            background: linear-gradient(to bottom, #ffe066 0%, #ffcc00 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.6);
+            color: #000;
+        }
+
+        /* The Gold Pulse Animation */
+        @keyframes pulse-gold {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+
+            70% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+            }
+        }
 
         /* BUTTONS */
-        .btn-whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); color: white; width: 100%; padding: 12px; border-radius: 50px; font-weight: bold; text-transform: uppercase; text-decoration: none; display: inline-block; text-align: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s; border: none; margin-top: 15px; }
-        .btn-whatsapp:hover { transform: scale(1.05); color: white; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            border: none;
+            margin-top: 15px;
+        }
 
-        .review-card { background: white; border: 1px solid #f0f0f0; padding: 25px; border-radius: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); position: relative; }
-        .quote-icon { font-size: 2rem; color: #eee; position: absolute; top: 10px; left: 15px; }
-        
-        .floating-wa { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; line-height: 65px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; animation: pulse-green 2s infinite; }
-        .floating-wa:hover { transform: scale(1.1); color: white; }
-        
-        @keyframes pulse-green { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            color: white;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
 
-        .form-box { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-top: 5px solid #d63384; }
-        .footer-section { background: #222; color: #fff; padding: 50px 20px; margin-top: 80px; }
-        .owner-name { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .shop-address { color: #ccc; margin-bottom: 20px; }
-        .btn-map { background-color: #fff; color: #333; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block; }
-        .btn-map:hover { background-color: #ddd; }
-        
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Call Button Style */
+        .btn-call {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            /* Blue Gradient */
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            transition: 0.3s;
+            border: none;
+            margin-top: 10px;
+            /* Space between WhatsApp and Call button */
+        }
+
+        .btn-call:hover {
+            transform: scale(1.05);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+        }
+
+        .review-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 25px;
+            border-radius: 15px;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: #eee;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 35px;
+            line-height: 65px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
+            animation: pulse-green 2s infinite;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #d63384;
+        }
+
+        .footer-section {
+            background: #222;
+            color: #fff;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        .owner-name {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .shop-address {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .btn-map {
+            background-color: #fff;
+            color: #333;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-map:hover {
+            background-color: #ddd;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* --- MOBILE SPECIFIC OPTIMIZATIONS --- */
         @media (max-width: 768px) {
             .hero {
-                background-attachment: scroll; 
+                background-attachment: scroll;
                 padding: 60px 15px;
                 min-height: 350px;
             }
-            .brand-name { font-size: 2.5rem; }
-            .hero-sub { font-size: 1.1rem; }
-            .container { padding-left: 15px; padding-right: 15px; }
+
+            .brand-name {
+                font-size: 2.5rem;
+            }
+
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
 
             /* OPTIMIZED FEATURE BOXES FOR MOBILE (3 in a row, compact) */
             .feature-box {
@@ -97,20 +464,27 @@
                 box-shadow: none !important;
                 border: 1px solid #eee;
             }
+
             .feature-icon {
-                font-size: 1.4rem; /* Smaller icon */
+                font-size: 1.4rem;
+                /* Smaller icon */
                 margin-bottom: 5px;
             }
+
             .feature-box h5 {
-                font-size: 0.8rem; /* Smaller Title */
+                font-size: 0.8rem;
+                /* Smaller Title */
                 margin-bottom: 2px;
                 font-weight: bold;
             }
+
             .feature-box p {
-                font-size: 0.6rem; /* Micro text for description */
+                font-size: 0.6rem;
+                /* Micro text for description */
                 line-height: 1.1;
                 margin-bottom: 0;
             }
+
             /* Override Bootstrap spacing for feature columns on mobile */
             .mobile-compact-col {
                 padding-left: 5px;
@@ -124,21 +498,39 @@
                 flex-wrap: nowrap;
                 gap: 15px;
                 padding-bottom: 20px;
-                -webkit-overflow-scrolling: touch; /* Smooth scroll on iPhone */
-                scrollbar-width: none; /* Hide scrollbar Firefox */
+                -webkit-overflow-scrolling: touch;
+                /* Smooth scroll on iPhone */
+                scrollbar-width: none;
+                /* Hide scrollbar Firefox */
             }
-            .review-scroller::-webkit-scrollbar { display: none; /* Hide scrollbar Chrome */ }
-            
+
+            .review-scroller::-webkit-scrollbar {
+                display: none;
+                /* Hide scrollbar Chrome */
+            }
+
             .review-scroller .col-md-4 {
-                flex: 0 0 85%; /* Card takes 85% width so next card peeps in */
+                flex: 0 0 85%;
+                /* Card takes 85% width so next card peeps in */
                 max-width: 85%;
             }
 
-            .form-box { padding: 25px; }
-            .floating-wa { width: 55px; height: 55px; line-height: 55px; font-size: 28px; bottom: 20px; right: 20px; }
+            .form-box {
+                padding: 25px;
+            }
+
+            .floating-wa {
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+                font-size: 28px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div id="fireworks-container">
@@ -150,7 +542,8 @@
 
     <div class="top-marquee">
         <marquee behavior="scroll" direction="left" scrollamount="8">
-            📢 <strong>Welcome to Neha Ice Cream Parlour!</strong> • 🍦 Book Vadilal Ice Cream Trolleys for Marriages • 🥛 Fresh Medha Milk & Paneer Available Daily! • 📞 Call: 9934506226
+            📢 <strong>Welcome to Neha Ice Cream Parlour!</strong> • 🍦 Book Vadilal Ice Cream Trolleys for Marriages •
+            🥛 Fresh Medha Milk & Paneer Available Daily! • 📞 Call: 9934506226
         </marquee>
     </div>
 
@@ -158,12 +551,14 @@
         <div>
             <h1 class="brand-name">Neha Ice Cream Parlour</h1>
             <p class="hero-sub">Medha Dairy & Vadilal Ice Cream in Dumri</p>
-            <a href="#products" class="btn btn-light rounded-pill px-4 mt-3 fw-bold" style="color: #d63384;">View Products</a>
+            <a href="#products" class="btn btn-light rounded-pill px-4 mt-3 fw-bold" style="color: #d63384;">View
+                Products</a>
         </div>
     </div>
 
     <div class="container" style="margin-top: -40px; position: relative; z-index: 10;">
-        <div class="row g-2"> <div class="col-4 mobile-compact-col" data-aos="fade-up" data-aos-delay="0">
+        <div class="row g-2">
+            <div class="col-4 mobile-compact-col" data-aos="fade-up" data-aos-delay="0">
                 <div class="feature-box">
                     <i class="fas fa-certificate feature-icon"></i>
                     <h5>Genuine</h5>
@@ -196,16 +591,27 @@
                         <h4 style="color: #444;">Dumri's Official Distributor</h4>
                         <p class="text-muted">Start your day healthy with Jharkhand's own pure milk products.</p>
                         <div class="mb-3">
-                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill p-2">✅ Daily Fresh</span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill p-2">✅ Bulk Supply</span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill p-2">✅ Daily
+                                Fresh</span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill p-2">✅ Bulk
+                                Supply</span>
                         </div>
                         <ul class="list-unstyled mb-3" style="border-left: 3px solid #0056b3; padding-left: 15px;">
                             <li><strong>Full Cream / Toned Milk</strong></li>
                             <li><strong>Fresh Paneer & Curd (Dahi)</strong></li>
                             <li><strong>Lassi & Pedha</strong></li>
                         </ul>
-                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=600&q=80" alt="Fresh Milk" class="img-fluid rounded mb-3" style="width: 100%; height: 250px; object-fit: cover;">
-                        <a href="https://wa.me/9934506226?text=Hi,%20I%20need%20Medha%20Dairy%20products." class="btn-whatsapp">Order Milk & Paneer <i class="fas fa-arrow-right"></i></a>
+                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=600&q=80"
+                            alt="Fresh Milk" class="img-fluid rounded mb-3"
+                            style="width: 100%; height: 250px; object-fit: cover;">
+
+                        <a href="dairy-menu.html" class="btn-menu-pop mb-3">
+                            <i class="fas fa-clipboard-list me-2"></i> View Menu
+                        </a>
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20need%20Medha%20Dairy%20products."
+                            class="btn-whatsapp">Order Milk & Paneer <i class="fas fa-arrow-right"></i></a>
+
+                        <a href="tel:+919934506226" class="btn-call">Call Now <i class="fas fa-phone-alt"></i></a>
                     </div>
                 </div>
             </div>
@@ -214,18 +620,28 @@
                     <div class="vadilal-header">🍦 Vadilal Ice Cream</div>
                     <div class="p-4">
                         <h4 class="gold-text">Premium Ice Cream Parlour</h4>
-                        <p class="text-muted">Indulge in the finest flavors. From cones to family packs, we have it all.</p>
+                        <p class="text-muted">Indulge in the finest flavors. From cones to family packs, we have it all.
+                        </p>
                         <div class="party-box mb-3">
                             <h5 style="color: #d63384; font-weight: bold;">🎉 Planning a Wedding?</h5>
-                            <p class="small mb-1">Book our <strong>VIP Ice Cream Trolley</strong> for Marriages & Parties!</p>
+                            <p class="small mb-1">Book our <strong>VIP Ice Cream Trolley</strong> for Marriages &
+                                Parties!</p>
                         </div>
                         <ul class="list-unstyled mb-3" style="border-left: 3px solid #d63384; padding-left: 15px;">
                             <li><strong>Party Packs & Bricks</strong></li>
                             <li><strong>Choco Bars & Cones</strong></li>
                             <li><strong>Sugar-Free Options</strong></li>
                         </ul>
-                        <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80" alt="Ice Cream Party" class="img-fluid rounded mb-3" style="width: 100%; height: 250px; object-fit: cover;">
-                        <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking." class="btn-whatsapp">Book Trolley Event <i class="fas fa-arrow-right"></i></a>
+                        <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80"
+                            alt="Ice Cream Party" class="img-fluid rounded mb-3"
+                            style="width: 100%; height: 250px; object-fit: cover;">
+                        <a href="ice-cream-menu.html" class="btn-menu-pop mb-3">
+                            <i class="fas fa-ice-cream me-2"></i> View Flavor Menu
+                        </a>
+                        <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking."
+                            class="btn-whatsapp">Book Trolley Event <i class="fas fa-arrow-right"></i></a>
+
+                        <a href="tel:+919934506226" class="btn-call">Call Now <i class="fas fa-phone-alt"></i></a>
                     </div>
                 </div>
             </div>
@@ -233,30 +649,38 @@
     </div>
 
     <div class="container mb-5" data-aos="fade-up">
-        <h3 class="text-center mb-5" style="font-family: 'Playfair Display', serif; color: #444; font-size: 2.5rem;">❤️ Happy Customers</h3>
-        
+        <h3 class="text-center mb-5" style="font-family: 'Playfair Display', serif; color: #444; font-size: 2.5rem;">❤️
+            Happy Customers</h3>
+
         <div class="row g-4 review-scroller">
             <div class="col-md-4">
                 <div class="review-card">
                     <i class="fas fa-quote-left quote-icon"></i>
-                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="small text-muted mt-2">"Best place in Dumri for fresh Medha milk. I buy paneer here every week and it is always soft and fresh."</p>
+                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="small text-muted mt-2">"Best place in Dumri for fresh Medha milk. I buy paneer here every
+                        week and it is always soft and fresh."</p>
                     <strong style="color: #0056b3;">- Rahul Kumar</strong>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="review-card">
                     <i class="fas fa-quote-left quote-icon"></i>
-                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="small text-muted mt-2">"We booked the Vadilal Ice Cream trolley for my sister's wedding. The service was excellent!"</p>
+                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="small text-muted mt-2">"We booked the Vadilal Ice Cream trolley for my sister's wedding.
+                        The service was excellent!"</p>
                     <strong style="color: #d63384;">- Amit Singh</strong>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="review-card">
                     <i class="fas fa-quote-left quote-icon"></i>
-                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="small text-muted mt-2">"Huge variety of ice creams. The  behavior of the owner is very polite."</p>
+                    <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="small text-muted mt-2">"Huge variety of ice creams. The behavior of the owner is very
+                        polite."</p>
                     <strong style="color: #444;">- Priya Kumari</strong>
                 </div>
             </div>
@@ -269,7 +693,8 @@
             <div class="col-md-8">
                 <div class="form-box text-center">
                     <h3 style="font-family: 'Playfair Display', serif; color: #d63384;">✍️ Write a Review</h3>
-                    <p class="text-muted small">We love to hear from our customers! Fill this form to send us your feedback directly.</p>
+                    <p class="text-muted small">We love to hear from our customers! Fill this form to send us your
+                        feedback directly.</p>
                     <div class="row g-3 mt-2">
                         <div class="col-md-6">
                             <input type="text" id="customerName" class="form-control" placeholder="Your Name">
@@ -284,7 +709,8 @@
                             </select>
                         </div>
                         <div class="col-12">
-                            <textarea id="reviewMessage" class="form-control" rows="3" placeholder="Write your experience here..."></textarea>
+                            <textarea id="reviewMessage" class="form-control" rows="3"
+                                placeholder="Write your experience here..."></textarea>
                         </div>
                         <div class="col-12">
                             <button onclick="sendReviewToWhatsApp()" class="btn-whatsapp w-auto px-5 mt-3">
@@ -297,7 +723,8 @@
         </div>
     </div>
 
-    <a href="https://wa.me/9934506226?text=Hello%20Neha%20Ice%20Cream!" class="floating-wa" target="_blank" title="Chat with us">
+    <a href="https://wa.me/9934506226?text=Hello%20Neha%20Ice%20Cream!" class="floating-wa" target="_blank"
+        title="Chat with us">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -306,21 +733,25 @@
             <div class="row justify-content-center">
                 <div class="col-md-5 mb-4 text-center text-md-start">
                     <p class="small text-uppercase text-secondary mb-1">Proprietor</p>
-                    <h3 class="owner-name">Madan Prasad Bhagat</h3> 
+                    <h3 class="owner-name">Madan Prasad Bhagat</h3>
                     <hr style="width: 60px; border: 2px solid #d4af37; opacity: 1; margin: 15px auto 15px 0;">
                     <p class="shop-address text-secondary">
                         <strong class="text-white">Neha Ice Cream Parlour & Medha Dairy</strong><br>
                         Main Road, Dumri, Giridih<br>
                         Jharkhand - 825167
                     </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Neha+Ice+Cream+Parlour+Dumri+Jharkhand" target="_blank" class="btn-map">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Neha+Ice+Cream+Parlour+Dumri+Jharkhand"
+                        target="_blank" class="btn-map">
                         <i class="fas fa-map-marker-alt me-2"></i> Open Location
                     </a>
                 </div>
                 <div class="col-md-5">
-                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-                        <h5 style="color: #d4af37; font-family: 'Playfair Display', serif; margin-bottom: 20px;">🕒 Opening Hours</h5>
-                        <div class="d-flex justify-content-between align-items-center mb-3" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                        <h5 style="color: #d4af37; font-family: 'Playfair Display', serif; margin-bottom: 20px;">🕒
+                            Opening Hours</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3"
+                            style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
                             <span class="text-secondary">☀️ Morning:</span>
                             <strong class="text-white">9:00 AM - 3:00 PM</strong>
                         </div>
@@ -332,7 +763,8 @@
                     </div>
                 </div>
             </div>
-            <p class="small text-secondary mt-5 mb-0 text-center">© 2025 Neha Ice Cream Parlour. All Rights Reserved.</p>
+            <p class="small text-secondary mt-5 mb-0 text-center">© 2025 Neha Ice Cream Parlour. All Rights Reserved.
+            </p>
         </div>
     </div>
 
@@ -344,18 +776,19 @@
             setTimeout(() => {
                 const fireContainer = document.getElementById('fireworks-container');
                 fireContainer.style.opacity = '0';
-                setTimeout(() => { fireContainer.style.display = 'none'; }, 2000); 
-            }, 5000); 
+                setTimeout(() => { fireContainer.style.display = 'none'; }, 2000);
+            }, 5000);
         });
         function sendReviewToWhatsApp() {
             var name = document.getElementById("customerName").value;
             var stars = document.getElementById("starRating").value;
             var msg = document.getElementById("reviewMessage").value;
-            if(name === "" || msg === "") { alert("Please write your name and review first!"); return; }
+            if (name === "" || msg === "") { alert("Please write your name and review first!"); return; }
             var url = "https://wa.me/9934506226?text=" + "📝 *New Customer Review* %0a" + "👤 Name: " + name + "%0a" + "⭐ Rating: " + stars + "%0a" + "💬 Review: " + msg;
             window.open(url, '_blank').focus();
         }
     </script>
 
 </body>
+
 </html>
