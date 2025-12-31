@@ -10,7 +10,6 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         body {
@@ -601,8 +600,7 @@
                             <li><strong>Fresh Paneer & Curd (Dahi)</strong></li>
                             <li><strong>Lassi & Pedha</strong></li>
                         </ul>
-                        <img src="medha_products.png"
-                            alt="Fresh Milk" class="img-fluid rounded mb-3"
+                        <img src="medha_products.png" alt="Fresh Milk" class="img-fluid rounded mb-3"
                             style="width: 100%; height: 250px; object-fit: cover;">
 
                         <a href="dairy-menu.html" class="btn-menu-pop mb-3">
@@ -638,7 +636,7 @@
                             alt="Ice Cream Party" class="img-fluid rounded mb-3"
                             style="width: 100%; height: 250px; object-fit: cover;">
                         <a href="ice-cream-menu.html" class="btn-menu-pop mb-3">
-                            <i class="fas fa-ice-cream me-2"></i> View  Menu
+                            <i class="fas fa-ice-cream me-2"></i> View Menu
                         </a>
                         <a href="https://wa.me/9934506226?text=Hi,%20I%20am%20interested%20in%20Ice%20Cream%20Trolley%20Booking."
                             class="btn-whatsapp">Book Trolley Event <i class="fas fa-arrow-right"></i></a>
@@ -773,22 +771,35 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        // 1. FIREWORKS LOGIC (Keep this)
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const fireContainer = document.getElementById('fireworks-container');
-                fireContainer.style.opacity = '0';
-                setTimeout(() => { fireContainer.style.display = 'none'; }, 2000);
+                if (fireContainer) {
+                    fireContainer.style.opacity = '0';
+                    setTimeout(() => { fireContainer.style.display = 'none'; }, 2000);
+                }
             }, 5000);
         });
+
+        // 2. WHATSAPP LOGIC (Keep this)
         function sendReviewToWhatsApp() {
             var name = document.getElementById("customerName").value;
             var stars = document.getElementById("starRating").value;
             var msg = document.getElementById("reviewMessage").value;
-            if (name === "" || msg === "") { alert("Please write your name and review first!"); return; }
-            var url = "https://wa.me/9934506226?text=" + "📝 *New Customer Review* %0a" + "👤 Name: " + name + "%0a" + "⭐ Rating: " + stars + "%0a" + "💬 Review: " + msg;
+
+            if (name === "" || msg === "") {
+                alert("Please write your name and review first!");
+                return;
+            }
+
+            var url = "https://wa.me/9934506226?text=" +
+                "📝 *New Customer Review* %0a" +
+                "👤 Name: " + name + "%0a" +
+                "⭐ Rating: " + stars + "%0a" +
+                "💬 Review: " + msg;
+
             window.open(url, '_blank').focus();
         }
     </script>
